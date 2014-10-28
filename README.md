@@ -54,6 +54,7 @@ Rather than sending push notifications to tokens which GCM gives you (which can 
 1. Return to your [ContextHub](http://app.contexthub.com) app and click Settings > Push Services.
 1. Paste your GCM API key in the Auth Key text box at the bottom of the page, then click the "Save" button.
 1. Back in Android Studio, replace `YOUR-GCM-PROJECT-ID-HERE` in the `NotifyMeApp` class with the GCM project id.
+1. Review `AndroidManifest.xml` file to familiarize yourself with the permissions, intent service, and broadcast receiver you'll need to add to your own app in order to leverage ContextHub's push services.
 
 ## Running the sample app
 

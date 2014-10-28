@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingTop="@dimen/activity_vertical_margin"
+        android:paddingBottom="@dimen/activity_vertical_margin">
+
+        <!-- prevent keyboard from showing on launch -->
+        <View
+            android:focusable="true" android:focusableInTouchMode="true"
+            android:layout_width="0px" android:layout_height="0px"/>
+
+        <TextView
+            style="@style/FormLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="textCapSentences"
+            android:text="@string/send_message"/>
+
+        <EditText
+            style="@style/FormField"
+            android:id="@+id/send_message"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            style="@style/FormLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/send_type"/>
+
+        <RadioGroup
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:layout_marginLeft="@dimen/small_margin"
+            android:orientation="vertical">
+
+            <RadioButton
+                android:id="@+id/send_type_device_id"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/device_id"
+                android:checked="true"/>
+
+            <TextView
+                style="@style/RadioOptionLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/device_id_message"/>
+
+            <RadioButton
+                android:id="@+id/send_type_alias"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/alias"/>
+
+            <TextView
+                style="@style/RadioOptionLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/device_id_message"/>
+
+            <RadioButton
+                android:id="@+id/send_type_tags"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/tags"/>
+
+            <TextView
+                style="@style/RadioOptionLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/device_id_message"/>
+
+        </RadioGroup>
+
+        <TextView
+            style="@style/FormLabel"
+            android:id="@+id/send_type_value_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/device_id"/>
+
+        <EditText
+            style="@style/FormField"
+            android:id="@+id/send_type_value"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <TextView
+            style="@style/FormLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/custom_payload"/>
+
+        <EditText
+            style="@style/FormField"
+            android:id="@+id/send_custom_payload"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textCapSentences"/>
+
+        <TextView
+            style="@style/FormLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/visibility"/>
+
+        <android.support.v7.widget.SwitchCompat
+            android:id="@+id/send_visibility"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/activity_vertical_margin"
+            android:layout_marginBottom="@dimen/activity_vertical_margin"
+            android:layout_marginLeft="@dimen/activity_horizontal_margin"
+            android:layout_marginRight="@dimen/activity_horizontal_margin"
+            android:text="@string/send_in_background"/>
+
+        <TextView
+            style="@style/FormLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/background_notifications_message"/>
+
+    </LinearLayout>
+
+</ScrollView>

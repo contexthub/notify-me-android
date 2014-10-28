@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">NotifyMe</string>
+    <string name="send">Send</string>
+    <string name="receive">Receive</string>
+    <string name="device">Device</string>
+    <string name="about">About</string>
+    <string name="about_text">This sample application uses ContextHub to send push notifications based on device id, alias, and tag. ContextHub manages which devices have each associated element so the right device gets the right notification at the right time.</string>
+    <string name="copyright_info">Copyright © 2014 ChaiOne\nAll Rights Reserved</string>
+    <string name="version_info">Version %1$s (%2$s)</string>
+    <string name="contexthub_url">http://contexthub.com</string>
+    <string name="send_message">Send Message</string>
+    <string name="send_type">Type</string>
+    <string name="device_id">Device Id</string>
+    <string name="alias">Alias</string>
+    <string name="tags">Tags</string>
+    <string name="device_id_message">Send message to a device with specific id</string>
+    <string name="custom_payload">Custom Payload</string>
+    <string name="visibility">Visibility</string>
+    <string name="send_in_background">Send in background</string>
+    <string name="background_notifications_message">Background notifications get processed even if the app isn\'t open</string>
+    <string name="comma_separated_aliases">Comma-separated aliases</string>
+    <string name="comma_separated_tags">Comma-separated tags</string>
+    <string name="push">Push</string>
+    <string name="push_message_sent">Push message sent</string>
+    <string name="alert_label">Alert: %1$s</string>
+    <string name="custom_payload_label">Custom payload: %1$s</string>
+    <string name="background_label">Background: %1$s</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+</resources>
