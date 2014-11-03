@@ -32,11 +32,11 @@ In this sample application, we use ContextHub to interact with Google Cloud Mess
 
 ## Background
 
-Push notifications allows you to increase user engagement with your application through timely alerts that a user can directly tap on to launch your app. Background notifications can silently wake up your app, do some processing, and then go back to sleep. The next time the user opens your app, it is filled with fresh content.
+Push notifications allow you to increase user engagement with your application through timely alerts that a user can directly tap on to launch your app. Background notifications can silently wake up your app, do some processing, and then go back to sleep. The next time the user opens your app, it is filled with fresh content.
 
 Rather than sending push notifications to tokens which GCM gives you (which can change at any time), ContextHub lets you deal with higher level concepts such as device ids, aliases, and tags:
 
-1. A device ID is a 32-hexadecimal character string that is uniquely tied to a device. It will remain the same for the life of the app, and is based on the device, app id, and bundle id.
+1. A device ID is a 32-hexadecimal character string that is uniquely tied to a device. It will remain the same for the life of the app, and is based on the device, app id, and package id.
 2. Aliases are a friendlier version of the device ID, though they do not need to be unique. Each device is restricted to only one alias, but multiple devices can have the same alias. A great use of aliases is to indicate all the devices that belong to the single person by setting the alias to be the same SHA1 hashed email address.
 3. Lastly, tags let you put devices into different groups. A single device can have multiple tags (vs. one alias per device), which give you as a developer more control over which devices get which notifications without explicitly needing to know all the specific device IDs which will receive the notification.
 
@@ -60,13 +60,13 @@ Rather than sending push notifications to tokens which GCM gives you (which can 
 
 1. Run the app on your device (push notifications do not work on emulators).
 2. On the `Send` tab, tap on the "message" field and type in a short message.
-3. By default, the app will send a message to your device id in the foreground. Try it now, tap `Push` in the upper right hand corner, and you should see a dialog when your message is received.
-4. On the `Receive` tab, you should see your notification appear and whether it was a foreground/background push, if it had a custom payload, and what time it was received. Tap the row to see more detail.
+3. By default, the app will send a message to your device id in the foreground. Try it now. Tap `Push` in the upper right hand corner, and you should see a dialog when your message is received.
+4. On the `Receive` tab, you should see your notification appear and whether it was a foreground/background push, if it had a custom payload, and what time it was received.
 4. Now tap the `Device` tab to see what your current alias and tags are. Tap on your alias (which in this app is your device name) to automatically copy it to your clipboard.
 5. Go back to the `Send` tab and replace your device id with your alias. Send another message.
 6. You should recent another message when the alert is received from GCM.
-7. Lastly, try sending a message to a tag by going to the `Device` tab. Tap a tag to copy it to your clipboard, then selecting "tags" in the type section and paste your tag into the next section. Tap the switch button on the bottom to instead send a background notification instead of a foreground notification. Now tap `Push`.
-8. You shouldn't see a message appear, but when you go to the receive tab, a new message should be present. If you repeat step 7 again, but immediately press the home button after sending your message, your device should vibrate to indicate that you got a new message.
+7. Lastly, try sending a message to a tag by going to the `Device` tab. Tap a tag to copy it to your clipboard, then selecting "tags" in the type section and paste your tag into the next section. Clear the text in the "message" field to send a background notification instead of a foreground notification. Now tap `Push`.
+8. You shouldn't see a message appear, but when you go to the receive tab, a new message should be present. If you repeat step 7 again, but immediately press the home button after sending your message, the new message should be waiting for you when you reopen the app.
 
 ## ADB Logcat
 
