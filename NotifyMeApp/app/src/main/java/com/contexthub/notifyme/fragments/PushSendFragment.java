@@ -1,15 +1,17 @@
 package com.contexthub.notifyme.fragments;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.SwitchCompat;
+import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.TextView;
@@ -18,9 +20,8 @@ import android.widget.Toast;
 import com.chaione.contexthub.sdk.ContextHub;
 import com.chaione.contexthub.sdk.PushNotificationProxy;
 import com.chaione.contexthub.sdk.callbacks.Callback;
-import com.chaione.contexthub.sdk.model.CustomDataPushNotification;
 import com.chaione.contexthub.sdk.model.PushNotification;
-import com.chaione.contexthub.sdk.model.PushNotificationMessage;
+import com.chaione.contexthub.sdk.model.SimplePushNotification;
 import com.contexthub.notifyme.R;
 import com.contexthub.notifyme.model.CustomData;
 
@@ -43,7 +44,6 @@ public class PushSendFragment extends Fragment implements Callback<Object> {
     @InjectView(R.id.send_type_value_label) TextView targetLabel;
     @InjectView(R.id.send_type_value) EditText targetValue;
     @InjectView(R.id.send_custom_payload) EditText customPayload;
-    @InjectView(R.id.send_visibility) SwitchCompat visibilitySwitch;
 
     private PushNotificationProxy proxy = new PushNotificationProxy();
 
@@ -92,32 +92,38 @@ public class PushSendFragment extends Fragment implements Callback<Object> {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        hideKeyboard();
         if(item.getItemId() == R.id.action_push) {
-            if(visibilitySwitch.isChecked()) {
-                sendBackgroundNotification();
+            if(TextUtils.isEmpty(customPayload.getText())) {
+                sendSimplePushNotification();
             }
             else {
-                sendForegroundNotification();
+                sendPushNotificationWithCustomPayload();
             }
             return true;
         }
         return super.onOptionsItemSelected(item);
     }
 
-    private void sendForegroundNotification() {
-        PushNotificationMessage notification =
-                new PushNotificationMessage(message.getText().toString());
-        applyRecipientFilter(notification);
-        proxy.sendPushNotificationMessage(notification, this);
+    private void hideKeyboard() {
+        InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(
+                Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(message.getWindowToken(), 0);
     }
 
-    private void sendBackgroundNotification() {
-        CustomData customData =
-                new CustomData(customPayload.getText().toString());
-        CustomDataPushNotification<CustomData> notification =
-                new CustomDataPushNotification<CustomData>(customData);
+    private void sendSimplePushNotification() {
+        SimplePushNotification notification = new SimplePushNotification(message.getText().toString());
         applyRecipientFilter(notification);
-        proxy.sendCustomDataPushNotification(notification, this);
+        proxy.sendSimplePushNotification(notification, this);
+    }
+
+    private void sendPushNotificationWithCustomPayload() {
+        CustomData customData = new CustomData(message.getText().toString(),
+                customPayload.getText().toString());
+        PushNotification<CustomData> notification = new PushNotification<CustomData>();
+        notification.setData(customData);
+        applyRecipientFilter(notification);
+        proxy.sendPushNotification(notification, this);
     }
 
     private void applyRecipientFilter(PushNotification notification) {

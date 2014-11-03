@@ -4,6 +4,9 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
@@ -27,6 +30,12 @@ import butterknife.InjectView;
 public class PushReceiveFragment extends ListFragment {
 
     @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setHasOptionsMenu(true);
+    }
+
+    @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         loadHistory();
@@ -46,6 +55,21 @@ public class PushReceiveFragment extends ListFragment {
 
         // Unregister from event bus
         ContextHub.getInstance().getBus().unregister(this);
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.fragment_receive, menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if(item.getItemId() == R.id.action_clear) {
+            PushNotificationHistory.delete();
+            loadHistory();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Subscribe
@@ -83,10 +107,9 @@ public class PushReceiveFragment extends ListFragment {
             }
 
             ReceivedPushNotification notification = getItem(position);
-            holder.alert.setText(getString(R.string.alert_label, notification.getAlert()));
+            holder.message.setText(getString(R.string.message_label, notification.getMessage()));
 
-            String hasCustomPayload = getString(notification.isCustomPayload() ? R.string.yes : R.string.no);
-            holder.customPayload.setText(getString(R.string.custom_payload_label, hasCustomPayload));
+            holder.customPayload.setText(getString(R.string.custom_payload_label, notification.getCustomPayload()));
 
             String isBackground = getString(notification.isBackground() ? R.string.yes : R.string.no);
             holder.background.setText(getString(R.string.background_label, isBackground));
@@ -99,7 +122,7 @@ public class PushReceiveFragment extends ListFragment {
 
     class ViewHolder {
 
-        @InjectView(R.id.received_push_notification_alert) TextView alert;
+        @InjectView(R.id.received_push_notification_message) TextView message;
         @InjectView(R.id.received_push_notification_custom_payload) TextView customPayload;
         @InjectView(R.id.received_push_notification_background) TextView background;
         @InjectView(R.id.received_push_notification_date) TextView date;

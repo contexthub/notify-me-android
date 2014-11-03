@@ -1,6 +1,7 @@
 package com.contexthub.notifyme.model;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 
 import com.contexthub.notifyme.Constants;
 
@@ -12,23 +13,23 @@ import java.util.Date;
  */
 public class ReceivedPushNotification implements Serializable {
 
-    String alert;
-    boolean customPayload;
+    String message;
+    String customPayload;
     boolean background;
     Date receivedDate;
 
     public ReceivedPushNotification(Bundle bundle) {
-        alert = bundle.getString(Constants.KEY_MESSAGE, "");
-        customPayload = bundle.containsKey(Constants.KEY_CUSTOM_PAYLOAD);
-        background = bundle.containsKey(Constants.KEY_MESSAGE);
+        message = bundle.getString(Constants.KEY_MESSAGE, "");
+        customPayload = bundle.getString(Constants.KEY_CUSTOM_PAYLOAD, "");
+        background = TextUtils.isEmpty(message);
         receivedDate = new Date();
     }
 
-    public String getAlert() {
-        return alert;
+    public String getMessage() {
+        return message;
     }
 
-    public boolean isCustomPayload() {
+    public String getCustomPayload() {
         return customPayload;
     }
 

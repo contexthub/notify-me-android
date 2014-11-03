@@ -9,6 +9,7 @@
 
     <style name="FormLabel" parent="android:Widget.TextView">
         <item name="android:layout_marginLeft">@dimen/activity_horizontal_margin</item>
+        <item name="android:layout_marginRight">@dimen/activity_horizontal_margin</item>
         <item name="android:textAppearance">?android:attr/textAppearanceSmall</item>
     </style>
 
@@ -21,5 +22,15 @@
         <item name="android:layout_marginLeft">@dimen/activity_horizontal_margin</item>
         <item name="android:layout_marginRight">@dimen/activity_horizontal_margin</item>
         <item name="android:layout_marginBottom">@dimen/activity_vertical_margin</item>
+    </style>
+
+    <style name="DeviceInfo">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">?android:attr/listPreferredItemHeightSmall</item>
+        <item name="android:paddingLeft">@dimen/activity_horizontal_margin</item>
+        <item name="android:paddingRight">@dimen/activity_horizontal_margin</item>
+        <item name="android:textColor">@android:color/black</item>
+        <item name="android:gravity">center_vertical</item>
+        <item name="android:background">@drawable/device_info_selector</item>
     </style>
 </resources>

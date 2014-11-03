@@ -20,14 +20,27 @@
             style="@style/FormLabel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:inputType="textCapSentences"
             android:text="@string/send_message"/>
 
         <EditText
             style="@style/FormField"
             android:id="@+id/send_message"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:inputType="textCapSentences"/>
+
+        <TextView
+            style="@style/FormLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/custom_payload"/>
+
+        <EditText
+            style="@style/FormField"
+            android:id="@+id/send_custom_payload"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textCapSentences"/>
 
         <TextView
             style="@style/FormLabel"
@@ -94,41 +107,6 @@
             android:id="@+id/send_type_value"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
-
-        <TextView
-            style="@style/FormLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/custom_payload"/>
-
-        <EditText
-            style="@style/FormField"
-            android:id="@+id/send_custom_payload"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textCapSentences"/>
-
-        <TextView
-            style="@style/FormLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/visibility"/>
-
-        <android.support.v7.widget.SwitchCompat
-            android:id="@+id/send_visibility"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/activity_vertical_margin"
-            android:layout_marginBottom="@dimen/activity_vertical_margin"
-            android:layout_marginLeft="@dimen/activity_horizontal_margin"
-            android:layout_marginRight="@dimen/activity_horizontal_margin"
-            android:text="@string/send_in_background"/>
-
-        <TextView
-            style="@style/FormLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/background_notifications_message"/>
 
     </LinearLayout>
 

@@ -24,9 +24,14 @@
     <string name="comma_separated_tags">Comma-separated tags</string>
     <string name="push">Push</string>
     <string name="push_message_sent">Push message sent</string>
-    <string name="alert_label">Alert: %1$s</string>
+    <string name="message_label">Message: %1$s</string>
     <string name="custom_payload_label">Custom payload: %1$s</string>
     <string name="background_label">Background: %1$s</string>
     <string name="yes">Yes</string>
     <string name="no">No</string>
+    <string name="device_tag_1">device-firsttag</string>
+    <string name="device_tag_2">device-secondtag</string>
+    <string name="copied_to_clipboard">\"%1$s\" was copied to the clipboard</string>
+    <string name="device_id_will_not_change">Device id will not change after it has been assigned by ContextHub</string>
+    <string name="clear">Clear</string>
 </resources>

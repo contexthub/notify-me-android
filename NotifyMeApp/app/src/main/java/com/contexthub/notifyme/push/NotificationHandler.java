@@ -6,6 +6,7 @@ import android.content.Context;
 import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.v4.app.NotificationCompat;
+import android.text.TextUtils;
 import android.util.Log;
 
 import com.chaione.contexthub.sdk.ContextHub;
@@ -28,7 +29,8 @@ public class NotificationHandler implements PushPayloadHandler {
         // Use ContextHub's instance of the Otto event bus to trigger history refresh in PushReceiveFragment
         ContextHub.getInstance().getBus().post(new PushReceivedEvent());
 
-        if(bundle.containsKey(Constants.KEY_MESSAGE)) {
+        String message = bundle.getString(Constants.KEY_MESSAGE, "");
+        if(!TextUtils.isEmpty(message)) {
             showNotification(context, bundle);
         }
         else {

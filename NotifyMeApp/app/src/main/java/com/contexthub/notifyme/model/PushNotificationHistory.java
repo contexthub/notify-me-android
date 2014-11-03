@@ -3,7 +3,9 @@ package com.contexthub.notifyme.model;
 import android.os.Bundle;
 
 import com.contexthub.notifyme.Constants;
+import com.google.gson.FieldNamingPolicy;
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.pixplicity.easyprefs.library.Prefs;
 
 import java.util.ArrayList;
@@ -13,7 +15,8 @@ import java.util.ArrayList;
  */
 public class PushNotificationHistory extends ArrayList<ReceivedPushNotification> {
 
-    private static Gson gson = new Gson();
+    private static Gson gson = new GsonBuilder()
+            .setFieldNamingPolicy(FieldNamingPolicy.LOWER_CASE_WITH_UNDERSCORES).create();
 
     public static void save(Bundle bundle) {
         ReceivedPushNotification notification = new ReceivedPushNotification(bundle);
@@ -31,5 +34,9 @@ public class PushNotificationHistory extends ArrayList<ReceivedPushNotification>
         catch (Exception e) {
             return new PushNotificationHistory();
         }
+    }
+
+    public static void delete() {
+        Prefs.remove(Constants.KEY_PUSH_HISTORY);
     }
 }

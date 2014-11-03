@@ -7,11 +7,11 @@
               android:padding="@dimen/small_margin">
 
     <TextView
-        android:id="@+id/received_push_notification_alert"
+        android:id="@+id/received_push_notification_message"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="@android:color/black"
-        android:text="Alert" />
+        android:text="Message" />
 
     <TextView
         android:id="@+id/received_push_notification_custom_payload"
