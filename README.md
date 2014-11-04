@@ -60,13 +60,13 @@ Rather than sending push notifications to tokens which GCM gives you (which can 
 
 1. Run the app on your device (push notifications do not work on emulators).
 2. On the `Send` tab, tap on the "message" field and type in a short message.
-3. By default, the app will send a message to your device id in the foreground. Try it now. Tap `Push` in the upper right hand corner, and you should see a dialog when your message is received.
+3. If text is entered in the "message" field, the app will send a push to your device id in the foreground. Try it now. Tap `Push` in the upper right hand corner, and you should see a notification when your message is received.
 4. On the `Receive` tab, you should see your notification appear and whether it was a foreground/background push, if it had a custom payload, and what time it was received.
-4. Now tap the `Device` tab to see what your current alias and tags are. Tap on your alias (which in this app is your device name) to automatically copy it to your clipboard.
-5. Go back to the `Send` tab and replace your device id with your alias. Send another message.
-6. You should recent another message when the alert is received from GCM.
-7. Lastly, try sending a message to a tag by going to the `Device` tab. Tap a tag to copy it to your clipboard, then selecting "tags" in the type section and paste your tag into the next section. Clear the text in the "message" field to send a background notification instead of a foreground notification. Now tap `Push`.
-8. You shouldn't see a message appear, but when you go to the receive tab, a new message should be present. If you repeat step 7 again, but immediately press the home button after sending your message, the new message should be waiting for you when you reopen the app.
+5. Now tap the `Device` tab to see what your current alias and tags are. Tap on your alias (which in this app is your device name) to automatically copy it to your clipboard.
+6. Go back to the `Send` tab and replace your device id with your alias. Send another message.
+7. You should see another notification when the alert is received from GCM.
+8. Lastly, try sending a message to a tag by going to the `Device` tab. Tap a tag to copy it to your clipboard, then selecting "tags" in the type section and paste your tag into the next section. Clear the text in the "message" field to send a background notification instead of a foreground notification. Now tap `Push`.
+9. You shouldn't see a notification appear, but when you go to the receive tab, a new message should be present. If you repeat step 6 again, but immediately press the home button after sending your message, the new message should be waiting for you when you reopen the app.
 
 ## ADB Logcat
 
