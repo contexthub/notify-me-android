@@ -70,14 +70,17 @@ public class PushSendFragment extends Fragment implements Callback<Object> {
         switch (view.getId()) {
             case R.id.send_type_device_id:
                 targetLabel.setText(R.string.device_id);
+                targetValue.setText(null);
                 targetValue.setHint(R.string.device_id);
                 break;
             case R.id.send_type_alias:
                 targetLabel.setText(R.string.alias);
+                targetValue.setText(null);
                 targetValue.setHint(R.string.comma_separated_aliases);
                 break;
             case R.id.send_type_tags:
                 targetLabel.setText(R.string.tags);
+                targetValue.setText(null);
                 targetValue.setHint(R.string.comma_separated_tags);
                 break;
             default:
